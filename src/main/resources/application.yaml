@@ -1,0 +1,20 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_batch
+    username: postgres
+    password: ${db_pass}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  batch:
+    jdbc:
+      initialize-schema: "always"
+    job:
+      enabled: false            # To prevent the batch job run at startup bcz we will trigger it from our
+                                # Controller
